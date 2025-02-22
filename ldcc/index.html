@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تاريخ السعودية - من البدايات إلى رؤية 2030</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #f39c12; /* اللون الذهبي */
+      --text-color: #fff;
+      --overlay-dark: rgba(0, 0, 0, 0.7);
+    }
+    /* إعادة تعيين الأساسيات */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #000;
+      color: var(--text-color);
+      direction: rtl;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a { text-decoration: none; color: inherit; }
+    
+    /* الحاوية العامة */
+    .container { width: 90%; max-width: 1200px; margin: auto; padding: 20px 0; }
+    
+    /* الترويسة */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.85);
+      padding: 15px 0;
+      z-index: 1000;
+    }
+    header .nav {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    header .logo { font-size: 28px; font-weight: bold; }
+    header .nav-links {
+      list-style: none; display: flex;
+    }
+    header .nav-links li { margin: 0 15px; }
+    header .nav-links li a {
+      font-size: 18px; transition: color 0.3s;
+    }
+    header .nav-links li a:hover { color: var(--primary-color); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: var(--text-color);
+      margin-bottom: 4px;
+      border-radius: 3px;
+    }
+    
+    /* الأقسام العامة */
+    section { padding: 100px 0; }
+    h2 { font-size: 36px; text-align: center; margin-bottom: 40px; }
+    p { font-size: 18px; max-width: 800px; margin: 0 auto 20px auto; text-align: center; }
+    
+    /* قسم البطل - صورة البداية */
+    .hero {
+      height: 100vh;
+      background: url('https://kss.sa/wp-content/uploads/2022/02/saudi-founding-day-2048x1152.jpeg?v=1644916337') no-repeat center center/cover;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center; z-index: 2;
+    }
+    .hero-content h1 { font-size: 48px; margin-bottom: 20px; }
+    .hero-content p { font-size: 22px; margin-bottom: 30px; }
+    .hero-content a {
+      background: var(--primary-color);
+      padding: 15px 30px;
+      border-radius: 5px; font-size: 20px;
+      transition: background 0.3s;
+    }
+    .hero-content a:hover { background: #e67e22; }
+    
+    /* قسم الفيديوهات */
+    #videos { background: #111; }
+    #videos .header-image { width: 100%; margin-bottom: 40px; }
+    #videos .header-image img {
+      width: 100%; max-height: 500px;
+      object-fit: cover; border-radius: 10px;
+    }
+    .video-section { margin-bottom: 40px; }
+    .video-wrapper { width: 100%; position: relative; }
+    .video-wrapper iframe {
+      width: 100%; aspect-ratio: 16 / 9; border: none;
+    }
+    
+    /* قسم قصة الملك عبدالعزيز */
+    #king-story {
+      position: relative;
+      background: url('https://gumlet.assettype.com/sabq/2022-09/d73d2292-edce-4ad8-8339-a5888f17dc80/DST_1788267_3512276_31_3_2022092215220028.jpeg?rect=0%2C60%2C478%2C269&auto=format%2Ccompress&fit=max&w=1200') no-repeat center center/cover;
+    }
+    #king-story::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+    #king-story .container,
+    #king-story h2,
+    #king-story p,
+    #king-story .content {
+      position: relative; z-index: 1;
+    }
+    
+    /* قسم التاريخ - الخط الزمني */
+    #history {
+      position: relative;
+      background: url('https://th.bing.com/th/id/OIP.zwOZ4cqi6VB0NAkovt-skgHaFm?rs=1&pid=ImgDetMain') no-repeat center center/cover;
+    }
+    #history::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--overlay-dark);
+      z-index: 0;
+    }
+    #history .container,
+    #history h2,
+    #history p,
+    .timeline,
+    .timeline-event .date,
+    .timeline-event .text {
+      position: relative; z-index: 1;
+      color: var(--text-color);
+    }
+    .timeline {
+      max-width: 900px; margin: auto; padding: 40px 0;
+    }
+    .timeline::after {
+      content: ''; position: absolute; width: 6px;
+      background-color: var(--primary-color); top: 0; bottom: 0;
+      left: 50%; margin-left: -3px;
+    }
+    .timeline-event {
+      padding: 10px 40px; position: relative; background: inherit;
+      width: 50%; margin-bottom: 40px;
+    }
+    .timeline-event.left { left: 0; text-align: right; }
+    .timeline-event.right { left: 50%; text-align: left; }
+    .timeline-event::after {
+      content: ''; position: absolute; width: 20px; height: 20px;
+      background-color: var(--primary-color); border: 4px solid #fff;
+      top: 15px; border-radius: 50%; z-index: 1;
+    }
+    .timeline-event.left::after { right: -10px; }
+    .timeline-event.right::after { left: -10px; }
+    .timeline-event .date { font-weight: bold; margin-bottom: 5px; }
+    .timeline-event .text { font-size: 16px; line-height: 1.5; }
+    
+    /* قسم الملوك والإنجازات */
+    #kings-achievements { background: #222; }
+    #kings-achievements .header-image {
+      width: 100%; margin-bottom: 40px;
+    }
+    #kings-achievements .header-image img {
+      width: 100%; max-height: 500px; object-fit: cover; border-radius: 10px;
+    }
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px; margin-top: 40px;
+    }
+    #kings-achievements .card {
+      background: #333; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: transform 0.3s;
+      text-align: center; padding-bottom: 20px; cursor: pointer;
+    }
+    #kings-achievements .card:hover { transform: translateY(-5px); }
+    #kings-achievements .card img {
+      width: 100%; height: auto; display: block;
+    }
+    #kings-achievements .card h3 { font-size: 20px; margin: 15px 0 10px; }
+    #kings-achievements .card p { font-size: 16px; padding: 0 10px; }
+    
+    /* قسم القصص التاريخية */
+    #stories {
+      position: relative;
+      background: url('https://i.pinimg.com/originals/45/df/a2/45dfa2f5b4a5c4c9f245c949806dd306.jpg') no-repeat center center/cover;
+    }
+    #stories::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--overlay-dark);
+      z-index: 0;
+    }
+    #stories .container,
+    #stories h2,
+    #stories p,
+    #stories .card,
+    #stories .card h3,
+    #stories .card p {
+      position: relative; z-index: 1;
+      color: var(--text-color);
+    }
+    #stories .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px; margin-top: 40px;
+    }
+    #stories .card {
+      background: #444; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: transform 0.3s;
+      text-align: center; padding: 20px; cursor: pointer;
+    }
+    #stories .card:hover { transform: translateY(-5px); }
+    #stories .card img {
+      width: 100%; height: auto; display: block;
+      border-bottom: 2px solid var(--primary-color); margin-bottom: 15px;
+    }
+    #stories .card h3 { font-size: 20px; margin-bottom: 10px; }
+    #stories .card p { font-size: 16px; padding: 0 10px; }
+    
+    /* قسم دعاء للوطن وشهداء الوطن */
+    #prayer {
+      position: relative;
+      background: url('https://4.bp.blogspot.com/-EJMcWTp_h5E/Walh5poCQVI/AAAAAAACcCQ/Dw0a-B7jQxIB5nf_gFKcYUcPowC2P6HRACLcBGAs/s1600/Hajj.jpg') no-repeat center center/cover;
+    }
+    #prayer::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--overlay-dark);
+      z-index: 0;
+    }
+    #prayer .container,
+    #prayer h2,
+    #prayer p {
+      position: relative; z-index: 1;
+      color: var(--text-color);
+    }
+    #prayer h2 { margin-bottom: 20px; }
+    #prayer p { font-size: 20px; line-height: 1.8; max-width: 800px; margin: 0 auto; }
+    
+    /* زر العودة للأعلى */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary-color);
+      color: #000;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      z-index: 1500;
+    }
+    
+    /* عداد الزوار */
+    #visitorCount {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(243, 156, 18, 0.9);
+      color: #000;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      z-index: 1500;
+    }
+    
+    /* التذييل */
+    footer { background: #000; text-align: center; padding: 20px; }
+    footer p { font-size: 16px; }
+    
+    /* مودال عرض التفاصيل */
+    .modal {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8); display: none;
+      justify-content: center; align-items: center; z-index: 2000;
+      padding: 20px;
+    }
+    .modal.active { display: flex; }
+    .modal-content {
+      background: #222; padding: 30px;
+      border-radius: 10px; max-width: 600px;
+      width: 100%; text-align: center; position: relative;
+    }
+    .modal-content h3 { font-size: 28px; margin-bottom: 20px; }
+    .modal-content p { font-size: 16px; margin-bottom: 20px; }
+    .modal-close {
+      position: absolute; top: 10px; right: 10px;
+      background: var(--primary-color); border: none; color: #000;
+      padding: 5px 10px; cursor: pointer; border-radius: 5px;
+    }
+    
+    /* استجابة الشاشات الصغيرة */
+    @media(max-width:768px) {
+      header .nav { flex-direction: column; }
+      header .nav-links { flex-direction: column; margin-top: 10px; }
+      header .nav-links li { margin: 10px 0; }
+      .hero-content h1 { font-size: 36px; }
+      .hero-content p { font-size: 20px; }
+      .video-wrapper iframe { height: auto; }
+      .timeline-event { width: 100%; padding-left: 70px; padding-right: 25px; text-align: right; }
+      .timeline-event.right { left: 0; }
+      .timeline-event::after { left: 60px; }
+      .timeline::after { left: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- الترويسة -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="logo">تاريخ السعودية</div>
+        <ul class="nav-links">
+          <li><a href="#hero">الرئيسية</a></li>
+          <li><a href="#videos">الفيديوهات</a></li>
+          <li><a href="#king-story">قصة الملك عبدالعزيز</a></li>
+          <li><a href="#history">التاريخ</a></li>
+          <li><a href="#kings-achievements">الملوك والإنجازات</a></li>
+          <li><a href="#stories">القصص</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  
+  <!-- زر العودة للأعلى -->
+  <button id="backToTop">&#8679;</button>
+  
+  <!-- عداد الزوار -->
+  <div id="visitorCount">الزوار: 0</div>
+  
+  <!-- قسم البطل -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>رحلة المملكة عبر العصور</h1>
+      <p>من البدايات الأولى إلى رؤية 2030.. تاريخ حافل بالعزيمة والإنجازات</p>
+      <a href="#king-story">اكتشف القصة</a>
+    </div>
+  </section>
+  
+  <!-- قسم الفيديوهات -->
+  <section id="videos">
+    <div class="container">
+      <h2>الفيديوهات</h2>
+      <div class="header-image">
+        <img src="https://static.sayidaty.net/styles/900_scale/public/2023-02/222131.jpg.webp" alt="صورة">
+      </div>
+      <section class="video-section" id="hero1" role="region" aria-label="قسم الفيديو الأول">
+        <div class="video-wrapper" id="player1"></div>
+      </section>
+      <section class="video-section" id="hero2" role="region" aria-label="قسم الفيديو الثاني">
+        <div class="video-wrapper" id="player2"></div>
+      </section>
+      <section class="video-section" id="hero3" role="region" aria-label="قسم الفيديو الثالث">
+        <div class="video-wrapper" id="player3"></div>
+      </section>
+    </div>
+  </section>
+  
+  <!-- قسم قصة الملك عبدالعزيز وتوحيد المملكة -->
+  <section id="king-story">
+    <div class="container">
+      <h2>قصة الملك عبدالعزيز وتوحيد المملكة</h2>
+      <div class="content">
+        <img src="https://via.placeholder.com/900x400?text=صورة+الملك+عبدالعزيز" alt="الملك عبدالعزيز">
+        <p>
+          تُعد قصة الملك عبدالعزيز بن عبدالرحمن آل سعود من أعظم الفصول في تاريخ المملكة؛ فقد وحد القبائل والمناطق المتفرقة وبنى الدولة التي نعرفها اليوم.
+        </p>
+        <p>
+          من خلال قيادته الحكيمة وتضحياته الكبيرة، مهد الطريق للتحديث وتطور المملكة في كافة المجالات.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- قسم التاريخ - الخط الزمني -->
+  <section id="history">
+    <div class="container">
+      <h2>تاريخ السعودية من البدايات إلى رؤية 2030</h2>
+      <div class="timeline">
+        <div class="timeline-event left">
+          <div class="date">1744 - 1818</div>
+          <div class="text">
+            تأسست الدولة السعودية الأولى على يد الإمام محمد بن سعود، وكانت البداية الأولى لمسيرة الوحدة والتراث السعودي.
+          </div>
+        </div>
+        <div class="timeline-event right">
+          <div class="date">1824 - 1891</div>
+          <div class="text">
+            أُنشئت الدولة السعودية الثانية في الرياض، وشهدت تحديات داخلية وخارجية ساهمت في تشكيل الهوية الوطنية.
+          </div>
+        </div>
+        <div class="timeline-event left">
+          <div class="date">1902 - 1932</div>
+          <div class="text">
+            بدأ الملك عبدالعزيز رحلة التوحيد باستعادة الرياض عام 1902، وتوالت الانتصارات التي أدت إلى توحيد مختلف مناطق المملكة.
+          </div>
+        </div>
+        <div class="timeline-event right">
+          <div class="date">1932 - 1950</div>
+          <div class="text">
+            أعلن عن تأسيس المملكة العربية السعودية عام 1932، وتمهيد الأسس الإدارية والحكومية التي مهدت للنمو المستقبلي.
+          </div>
+        </div>
+        <div class="timeline-event left">
+          <div class="date">1950 - 1970</div>
+          <div class="text">
+            مع اكتشاف النفط وتطويره، شهدت المملكة طفرة اقتصادية واجتماعية أدت إلى تحديث البنية التحتية وتحسين مستوى المعيشة.
+          </div>
+        </div>
+        <div class="timeline-event right">
+          <div class="date">1970 - 2000</div>
+          <div class="text">
+            تطورت المملكة في مجالات التعليم والصحة والاقتصاد، مع استمرار جهود الإصلاح والتحول الوطني.
+          </div>
+        </div>
+        <div class="timeline-event left">
+          <div class="date">2000 - 2020</div>
+          <div class="text">
+            مع بداية القرن الحادي والعشرين، شهدت السعودية إصلاحات وتنمية شاملة وتعزيز الاستثمارات في كافة القطاعات.
+          </div>
+        </div>
+        <div class="timeline-event right">
+          <div class="date">2020 - الآن</div>
+          <div class="text">
+            أطلقت المملكة رؤية 2030 لتنويع الاقتصاد وتعزيز التنمية المستدامة، مع تحديث شامل يحافظ على الهوية الوطنية.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- قسم الملوك والإنجازات -->
+  <section id="kings-achievements">
+    <div class="container">
+      <h2>الملوك والإنجازات</h2>
+      <div class="header-image">
+        <img src="https://www.almrsal.com/wp-content/uploads/2023/11/%D9%85%D9%88%D8%B6%D9%88%D8%B9-%D8%B9%D9%86-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D9%85%D9%85%D9%84%D9%83%D8%A9-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9.png" alt="صورة الملوك">
+      </div>
+      <div class="card-grid">
+        <div class="card" data-title="الملك عبدالعزيز" data-details="الملك عبدالعزيز (1932-1953): قام بتوحيد المملكة وأرسى أسس الدولة الحديثة.
+• توحيد القبائل والمناطق المتفرقة.
+• تأسيس مؤسسات الدولة وبناء اقتصاد متين.
+• تحقيق انتصارات في المجالات العسكرية والسياسية والاجتماعية.">
+          <img src="https://via.placeholder.com/300x200?text=الملك+عبدالعزيز" alt="الملك عبدالعزيز">
+          <h3>الملك عبدالعزيز (1932-1953)</h3>
+          <p>توحيد المملكة وإرساء أسس الدولة الحديثة.</p>
+        </div>
+        <div class="card" data-title="الملك سعود" data-details="الملك سعود (1953-1964): شهدت فترة حكمه محاولات للتحديث الإداري والاقتصادي مع تحديات كبيرة.
+• إصلاحات إدارية ومحاولات تحديث الاقتصاد.
+• مواجهة تحديات اقتصادية واجتماعية.">
+          <img src="https://via.placeholder.com/300x200?text=الملك+سعود" alt="الملك سعود">
+          <h3>الملك سعود (1953-1964)</h3>
+          <p>مراحل التحديث والإصلاح الإداري.</p>
+        </div>
+        <div class="card" data-title="الملك فيصل" data-details="الملك فيصل (1964-1975): اهتم بتطوير العلاقات الدولية وتعزيز الاقتصاد الوطني، مع ترك إرث في السياسة الخارجية والإصلاحات الاجتماعية.
+• سياسات خارجية جريئة.
+• إصلاحات اجتماعية واقتصادية.
+• تعزيز العلاقات الدولية.">
+          <img src="https://via.placeholder.com/300x200?text=الملك+فيصل" alt="الملك فيصل">
+          <h3>الملك فيصل (1964-1975)</h3>
+          <p>تطوير العلاقات الخارجية وتعزيز الاقتصاد.</p>
+        </div>
+        <div class="card" data-title="الملك خالد" data-details="الملك خالد (1975-1982): استكمل مسيرة النمو الاقتصادي للمملكة، مع التركيز على تطوير البنية التحتية وتحسين الخدمات العامة.
+• تطوير البنية التحتية.
+• تحسين الخدمات العامة.
+• توسيع النمو الحضري.">
+          <img src="https://via.placeholder.com/300x200?text=الملك+خالد" alt="الملك خالد">
+          <h3>الملك خالد (1975-1982)</h3>
+          <p>استكمال مسيرة النمو الاقتصادي والبنية التحتية.</p>
+        </div>
+        <div class="card" data-title="الملك فهد" data-details="الملك فهد (1982-2005): شهد عصر حكمه تحولات اقتصادية واجتماعية كبرى، مع تطوير نظام الخدمات الصحية والتعليمية وتحديث البنية التحتية بشكل شامل.
+• تطوير نظام الصحة والتعليم.
+• تحديث البنية التحتية.
+• تعزيز التحول الاقتصادي.">
+          <img src="https://via.placeholder.com/300x200?text=الملك+فهد" alt="الملك فهد">
+          <h3>الملك فهد (1982-2005)</h3>
+          <p>عصر التحول الاقتصادي وتطوير الخدمات العامة.</p>
+        </div>
+        <div class="card" data-title="الملك عبدالله" data-details="الملك عبدالله (2005-2015): نفذ إصلاحات اقتصادية واجتماعية جذرية، وعزز التنمية في مختلف القطاعات مثل التعليم والصحة والبنية التحتية.
+• إصلاحات شاملة.
+• تعزيز التنمية في القطاعات الحيوية.
+• تحديث نظم التعليم والصحة.">
+          <img src="https://via.placeholder.com/300x200?text=الملك+عبدالله" alt="الملك عبدالله">
+          <h3>الملك عبدالله (2005-2015)</h3>
+          <p>الإصلاحات الاجتماعية والاقتصادية وتعزيز التنمية.</p>
+        </div>
+        <div class="card" data-title="الملك سلمان" data-details="الملك سلمان (2015-الآن): يقود المرحلة الحالية تحت رؤية 2030، مع تركيز على تنويع الاقتصاد وتعزيز التنمية المستدامة وإحداث تغييرات استراتيجية شاملة.
+• رؤية 2030.
+• تنويع الاقتصاد.
+• إصلاحات استراتيجية شاملة.">
+          <img src="https://via.placeholder.com/300x200?text=الملك+سلمان" alt="الملك سلمان">
+          <h3>الملك سلمان (2015-الآن)</h3>
+          <p>رؤية 2030 وتعزيز مكانة المملكة عالميًا.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- قسم القصص التاريخية -->
+  <section id="stories">
+    <div class="container">
+      <h2>القصص التاريخية</h2>
+      <div class="card-grid">
+        <div class="card" data-title="قصة الدولة السعودية الأولى" data-story="قصة الدولة السعودية الأولى:
+بداية مسيرة الوحدة والتراث على يد الإمام محمد بن سعود.
+تُعتبر هذه القصة الانطلاقة التاريخية التي وضعت الأسس لبناء الهوية الوطنية، حيث تمكن الإمام محمد بن سعود من توحيد القبائل وإرساء قيم الوحدة والتراث التي لازالت تبرز في تاريخ المملكة.">
+          <img src="https://via.placeholder.com/300x200?text=الدولة+السعودية+الأولى" alt="الدولة السعودية الأولى">
+          <h3>قصة الدولة السعودية الأولى</h3>
+          <p>بداية مسيرة الوحدة والتراث على يد الإمام محمد بن سعود.</p>
+        </div>
+        <div class="card" data-title="قصة توحيد المملكة" data-story="قصة توحيد المملكة:
+رحلة الملك عبدالعزيز في توحيد القبائل وبناء الدولة الحديثة.
+من خلال سلسلة من المعارك والانتصارات، تمكن الملك عبدالعزيز من توحيد مناطق المملكة المتفرقة وبناء الدولة التي قام عليها النظام الإداري الحديث، مما وضع حجر الأساس للتقدم والتحول الاقتصادي والاجتماعي في المملكة.">
+          <img src="https://via.placeholder.com/300x200?text=قصة+التوحيد" alt="قصة التوحيد">
+          <h3>قصة توحيد المملكة</h3>
+          <p>رحلة الملك عبدالعزيز في توحيد القبائل وبناء الدولة الحديثة.</p>
+        </div>
+        <div class="card" data-title="قصة اكتشاف النفط" data-story="قصة اكتشاف النفط:
+التحول الاقتصادي والاجتماعي الذي أحدثه اكتشاف النفط.
+يُعد اكتشاف النفط من أهم المحطات التي غيرت مسار المملكة، حيث أدى إلى طفرة اقتصادية هائلة وتحول اجتماعي كبير، مما ساهم في تحديث البنية التحتية ورفع مستوى المعيشة، وأحدث نقلة نوعية في التنمية الاقتصادية للمملكة.">
+          <img src="https://via.placeholder.com/300x200?text=اكتشاف+النفط" alt="اكتشاف النفط">
+          <h3>قصة اكتشاف النفط</h3>
+          <p>التحول الاقتصادي والاجتماعي الذي أحدثه اكتشاف النفط.</p>
+        </div>
+        <div class="card" data-title="قصة النهضة الثقافية" data-story="قصة النهضة الثقافية:
+شهدت المملكة موجة من النهضة الثقافية والفنية أدت إلى ازدهار المشهد الأدبي والفني والإعلامي.
+• ازدهار الأدب والشعر.
+• تطوير الفنون والموسيقى.
+• دعم المبادرات الثقافية والإعلامية.">
+          <img src="https://via.placeholder.com/300x200?text=النهضة+الثقافية" alt="النهضة الثقافية">
+          <h3>قصة النهضة الثقافية</h3>
+          <p>ازدهار المشهد الثقافي والفني في المملكة.</p>
+        </div>
+        <div class="card" data-title="قصة التحول الاجتماعي" data-story="قصة التحول الاجتماعي:
+شهدت المملكة تحولات اجتماعية كبيرة في العقود الأخيرة، حيث ارتفعت معدلات التعليم والتوظيف وتحسنت ظروف المعيشة.
+• تطوير التعليم والتوظيف.
+• تحسين مستوى المعيشة.
+• تعزيز دور المرأة والشباب في المجتمع.">
+          <img src="https://via.placeholder.com/300x200?text=التحول+الاجتماعي" alt="التحول الاجتماعي">
+          <h3>قصة التحول الاجتماعي</h3>
+          <p>تحولات اجتماعية هائلة في المملكة.</p>
+        </div>
+        <div class="card" data-title="قصة رؤية 2030" data-story="قصة رؤية 2030:
+إطلاق المملكة لرؤية 2030 كان بمثابة خطوة جريئة نحو تنويع الاقتصاد وتعزيز التنمية المستدامة.
+• تنويع الاقتصاد.
+• تعزيز التنمية المستدامة.
+• إصلاحات استراتيجية شاملة في كافة المجالات.">
+          <img src="https://via.placeholder.com/300x200?text=رؤية+2030" alt="رؤية 2030">
+          <h3>قصة رؤية 2030</h3>
+          <p>نقلة نوعية نحو مستقبل مشرق للمملكة.</p>
+        </div>
+        <div class="card" data-title="قصة النمو الاقتصادي" data-story="قصة النمو الاقتصادي:
+شهدت المملكة تحولات اقتصادية ضخمة أدت إلى ازدهار القطاعات الصناعية والخدمية.
+• تطور البنية التحتية.
+• تنمية قطاعات الصناعة والتجارة.
+• تحقيق نمو اقتصادي ملحوظ عبر العقود.">
+          <img src="https://via.placeholder.com/300x200?text=النمو+الاقتصادي" alt="النمو الاقتصادي">
+          <h3>قصة النمو الاقتصادي</h3>
+          <p>تحولات اقتصادية ضخمة في المملكة.</p>
+        </div>
+        <div class="card" data-title="قصة التطوير التقني" data-story="قصة التطوير التقني:
+شهدت المملكة اهتماماً متزايداً بالتكنولوجيا والابتكار مما ساهم في تطوير قطاعات عدة.
+• اعتماد التقنيات الحديثة.
+• دعم الابتكار وريادة الأعمال.
+• تحسين الخدمات الحكومية والتجارية باستخدام التقنيات الرقمية.">
+          <img src="https://via.placeholder.com/300x200?text=التطوير+التقني" alt="التطوير التقني">
+          <h3>قصة التطوير التقني</h3>
+          <p>رحلة الابتكار والتطوير التقني في المملكة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- قسم دعاء للوطن وشهداء الوطن -->
+  <section id="prayer">
+    <div class="container">
+      <h2>دعاء للوطن وشهداء الوطن</h2>
+      <p>
+        اللهم احفظ وطننا وارزقنا الأمن والاستقرار، وارزقنا الوحدة والعطاء في سبيله.<br>
+        اللهم ارحم شهداءنا واغفر لهم، واجعلهم من أهل الجنة، وامنح ذويهم الصبر والسلوان.<br>
+        اللهم اجعل هذا الوطن منارة للأمل والعطاء، وحقق لنا فيه السلام والرخاء.
+      </p>
+    </div>
+  </section>
+  
+  <!-- التذييل -->
+  <footer>
+    <p>© 2025 تاريخ السعودية. جميع الحقوق محفوظة.</p>
+  </footer>
+  
+  <!-- مودال عرض تفاصيل الملوك -->
+  <div id="kingModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">إغلاق</button>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDetails"></p>
+    </div>
+  </div>
+  
+  <!-- مودال عرض تفاصيل القصص -->
+  <div id="storyModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="storyModalClose">إغلاق</button>
+      <h3 id="storyModalTitle"></h3>
+      <p id="storyModalDetails"></p>
+    </div>
+  </div>
+  
+  <!-- تضمين YouTube Iframe API -->
+  <script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+    var players = [];
+    function onYouTubeIframeAPIReady() {
+      players.push(new YT.Player('player1', {
+        videoId: 'P4YGQ-d4Wz8',
+        playerVars: { autoplay: 0, controls: 1, modestbranding: 1, playsinline: 1 },
+        events: { 'onReady': onPlayerReady }
+      }));
+      players.push(new YT.Player('player2', {
+        videoId: 'O8ciyr5EoYw',
+        playerVars: { autoplay: 0, controls: 1, modestbranding: 1, playsinline: 1 },
+        events: { 'onReady': onPlayerReady }
+      }));
+      players.push(new YT.Player('player3', {
+        videoId: '3vQQxYjQr7g',
+        playerVars: { autoplay: 0, controls: 1, modestbranding: 1, playsinline: 1 },
+        events: { 'onReady': onPlayerReady }
+      }));
+    }
+    
+    function onPlayerReady(event) {
+      var player = event.target;
+      var iframe = player.getIframe();
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if(entry.isIntersecting) {
+            player.playVideo();
+          } else {
+            player.pauseVideo();
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(iframe);
+    }
+  </script>
+  
+  <!-- زر العودة للأعلى -->
+  <script>
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.pageYOffset > 300 ? 'block' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+  
+  <!-- عداد الزوار -->
+  <script>
+    function updateVisitorCount() {
+      let count = localStorage.getItem('visitorCount');
+      if (!count) count = 0;
+      count = parseInt(count) + 1;
+      localStorage.setItem('visitorCount', count);
+      document.getElementById('visitorCount').innerText = "الزوار: " + count;
+    }
+    updateVisitorCount();
+  </script>
+  
+  <!-- تضمين GSAP لتحريك العناصر -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  <script>
+    gsap.from(".hero-content h1", { duration: 1.2, opacity: 0, y: -50, ease: "power2.out" });
+    gsap.from(".hero-content p", { duration: 1.2, opacity: 0, y: 50, ease: "power2.out", delay: 0.5 });
+    
+    // فتح مودال تفاصيل الملوك
+    document.querySelectorAll("#kings-achievements .card").forEach(function(card) {
+      card.addEventListener("click", function() {
+        var title = card.getAttribute("data-title");
+        var details = card.getAttribute("data-details");
+        document.getElementById("modalTitle").textContent = title;
+        document.getElementById("modalDetails").textContent = details;
+        document.getElementById("kingModal").classList.add("active");
+      });
+    });
+    document.getElementById("modalClose").addEventListener("click", function() {
+      document.getElementById("kingModal").classList.remove("active");
+    });
+    
+    // فتح مودال تفاصيل القصص
+    document.querySelectorAll("#stories .card").forEach(function(card) {
+      card.addEventListener("click", function() {
+        var title = card.getAttribute("data-title");
+        var story = card.getAttribute("data-story");
+        document.getElementById("storyModalTitle").textContent = title;
+        document.getElementById("storyModalDetails").textContent = story;
+        document.getElementById("storyModal").classList.add("active");
+      });
+    });
+    document.getElementById("storyModalClose").addEventListener("click", function() {
+      document.getElementById("storyModal").classList.remove("active");
+    });
+  </script>
+</body>
+</html>
